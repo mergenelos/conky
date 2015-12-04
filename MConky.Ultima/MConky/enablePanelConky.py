@@ -15,9 +15,9 @@ for i in anyMaxWin:
 	i=i.rstrip().split('\n')
 	i=i[2]
 	i=i[17:]
-	if int(i)>716 and int(i)<767:
+	if int(i)>685 and int(i)<767:
 		yesExist=1
 		break
 
 if len(runningConkys)==1 and yesExist==1:
-	pidofconky=subprocess.getoutput('conky -c ~/.conkyrc_arch')
+	pidofconky=subprocess.getoutput('conky -c ~/.conkyArch.conf')

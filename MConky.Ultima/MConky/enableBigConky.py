@@ -21,10 +21,9 @@ for i in anyMaxWin:
 	i=i.rstrip().split('\n')
 	i=i[2]
 	i=i[16:]
-	if i=="x725" or i=="x743":
+	if i=='x679' or i=='x682' or i=='x691':
 		yesExist=1
 		break
-
 if yesExist==0:
 	subprocess.getoutput('kill '+ runningConkys)
 

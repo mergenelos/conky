@@ -27,7 +27,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00C9FF,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=245,
 		thickness=7,
 		start_angle=0,
@@ -42,7 +42,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0xf0f8ff,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=225,
 		thickness=7,
 		start_angle=0,
@@ -56,7 +56,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x47B13E,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=213,
 		thickness=7,
 		start_angle=0,
@@ -70,7 +70,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00FF00,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=193,
 		thickness=7,
 		start_angle=0,
@@ -84,7 +84,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x1ba1e2,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=181,
 		thickness=7,
 		start_angle=0,
@@ -98,7 +98,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0xf09609,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=161,
 		thickness=7,
 		start_angle=0,
@@ -112,7 +112,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0xa200ff,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=149,
 		thickness=7,
 		start_angle=0,
@@ -126,7 +126,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0xff0097,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=137,
 		thickness=7,
 		start_angle=0,
@@ -140,7 +140,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00aba9,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=125,
 		thickness=7,
 		start_angle=0,
@@ -154,7 +154,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0xf0f8ff,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=181,
 		thickness=7,
 		start_angle=135,
@@ -168,7 +168,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00FF00,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=193,
 		thickness=7,
 		start_angle=135,
@@ -182,7 +182,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00C9FF,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=205,
 		thickness=7,
 		start_angle=135,
@@ -196,7 +196,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00C9FF,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=205,
 		thickness=7,
 		start_angle=305,
@@ -210,7 +210,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00C9FF,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=270,
 		thickness=7,
 		start_angle=45,
@@ -224,7 +224,7 @@ settings_table = {
 		bg_alpha=0.0,
 		fg_colour=0x00C9FF,
 		fg_alpha=1.0,
-		x=375, y=300,
+		x=375, y=375,
 		radius=550,
 		thickness=7,
 		start_angle=68,
@@ -242,7 +242,7 @@ settings_t = {
 		bg_alpha=0.0,
 		fg_colour=0x2baad7,
 		fg_alpha=1.0,
-		x=376, y=300,
+		x=375, y=375,
 		radius=115,
 		thickness=4,
 		start_angle=0,
@@ -348,28 +348,6 @@ function conky_ring_stats()
  
 	if update_num>5 then
 		for i in pairs(settings_table) do
-			if settings_table[i]['name'] == "playRing" then
-				-- This will open the file
-				local file = io.popen('python ~/.conky/MConky/completetime.py')
-				-- This will read all of the output, as always
-				local output = file:read('*all')
-				-- This will get a table with some return stuff
-				-- rc[1] will be true, false or nil
-				-- rc[3] will be the signal
-				local rc = {file:close()}
-				settings_table[i]['max']=output
-
-
-				-- This will open the file
-				local m = io.popen('python ~/.conky/MConky/playPast.py')
-				-- This will read all of the output, as always
-				local ooo = m:read('*all')
-				-- This will get a table with some return stuff
-				-- rc[1] will be true, false or nil
-				-- rc[3] will be the signal
-				local rc = {m:close()}
-				settings_table[i]['now']=ooo
-			end
 			setup_rings(cr,settings_table[i])
 		end
 		for i in pairs(settings_t) do

@@ -11,5 +11,4 @@ while '' in runningConkys:
 
 
 if len(runningConkys)!=0:
-	pidofmargin=subprocess.getoutput('xfconf-query -c xfwm4 -p /general/margin_top -s 0')
-	pidofconky=pidofconky=subprocess.getoutput('killall conky')
+	pidofconky=subprocess.getoutput('killall conky')
