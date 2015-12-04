@@ -1,0 +1,104 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+short_units yes
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+imlib_cache_size 0
+
+own_window_argb_visual true
+own_window_argb_value 0
+own_window_type desktop
+own_window yes
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 1366 768
+alignment tl
+gap_x 50
+gap_y 70
+
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+default_color cccccc
+draw_borders no
+draw_graph_borders no
+use_xft yes
+xftfont Aller:Bold:size=10
+xftalpha 0.5
+
+# -- Lua load -- #
+lua_load ~/.conky/AConky/.lua.lua 
+
+lua_draw_hook_pre ring_stats
+lua_draw_hook_post start
+
+#at least one line (empty or not) after TEXT
+TEXT
+${goto 22}${voffset 27}CPU${goto 80}${voffset -30}CPUAV: ${font Ubuntu:style=Bold:size=8}${cpu cpu0}% ${font} 
+${GOTO 80}Frequency: ${font Ubuntu:style=Bold:size=8}${freq_g}Ghz${font} 
+${GOTO 80}Load:   ${font Ubuntu:style=Bold:size=8}$loadavg${font}
+${GOTO 80}Processes:   ${font Ubuntu:style=Bold:size=8}$processes${font} 
+${GOTO 80}Temp: ${font Ubuntu:style=Bold:size=8}${hwmon 0 temp 1}°C${font} 
+
+${goto 21}${voffset 30}RAM${goto 80}${voffset -15}RAM: ${font Ubuntu:style=Bold:size=8}${memperc}%${font} 
+${goto 80}Free: ${font Ubuntu:style=Bold:size=8}${memeasyfree}${font}
+${goto 80}Used: ${font Ubuntu:style=Bold:size=8}${mem}${font} 
+
+${goto 18}${voffset 50}SWAP${goto 80}${voffset -15}SWAP: ${font Ubuntu:style=Bold:size=8}${swapperc}%${font} 
+${goto 80}Avail: ${font Ubuntu:style=Bold:size=8}${swapmax}${font} 
+${goto 80}Used: ${font Ubuntu:style=Bold:size=8}${swap}${font} 
+
+${goto 27}${voffset 50}UP${if_up wlp8s0}${goto 80}${voffset -7}Up: ${font Ubuntu:style=Bold:size=9}${upspeed wlp8s0}${font} 
+${goto 80}overall: ${font Ubuntu:style=Bold:size=8}${totalup wlp8s0}${font} 
+
+${goto 16}${voffset 57}DOWN${goto 80}${voffset -15}Down: ${font Ubuntu:style=Bold:size=9}${downspeed wlp8s0}${font}
+${goto 80}overall: ${font Ubuntu:style=Bold:size=8}${totaldown wlp8s0}${font} 
+${goto 80}Signal: ${font Ubuntu:style=Bold:size=9}${wireless_link_qual wlp8s0}%${font} 
+
+${goto 18}${voffset 52}ROOT${goto 80}${voffset -7}Free: ${font Ubuntu:style=Bold:size=8}${fs_free /}${font} 
+${goto 80}Used: ${font Ubuntu:style=Bold:size=8}${fs_used /}${font} 
+
+${goto 17}${voffset 59}HOME${goto 80}${voffset -7}Free: ${font Ubuntu:style=Bold:size=8}${fs_free /home}${font} 
+${goto 80}Used: ${font Ubuntu:style=Bold:size=8}${fs_used /home}${font} 
+
+${goto 370}${voffset -663}${color white}${font Ubuntu:style=Bold:size=34}$nodename${font}${color}
+
+#${goto 316}${voffset 10}${color #888888}${cpugraph -200, 1000 0000ff ff0000}
+
+${goto 400}${voffset -20}${font Ubuntu:size=20}${color grey}$sysname${font} $kernel${font Ubuntu:size=10} 
+${goto 410}${color grey}on a $machine machine${font}
+${goto 410}${voffset 10}Host: $nodename
+${goto 410}Uptime: $uptime
+${goto 410}Battery at ${battery_percent BAT1}%
+
+${goto 400}${color grey}${font Ubuntu:size=20}${top name 1}${font}${color}
+${goto 400}is using${top cpu 1}% CPU
+${goto 400}and ${top mem_res 1} of RAM
+
+${goto 360}${top name 2} ${top cpu 2}%, ${top mem_res 2}
+${goto 360}${top name 3} ${top cpu 3}%, ${top mem_res 3}
+${goto 360}${top name 4} ${top cpu 4}%, ${top mem_res 4}
+${goto 360}${top name 5} ${top cpu 5}%, ${top mem_res 5}
+${goto 360}${top name 6} ${top cpu 6}%, ${top mem_res 6}
+
+${goto 360}${voffset 10}${color #888888}${upspeedgraph wlp8s0 100,200 00FF00 00FF00}
+${goto 360}${voffset 35}${color #888888}${downspeedgraph wlp8s0 -100,200 1ba1e2 1ba1e2}
+
+${goto 450}${voffset 50}All Other Drives
+${goto 360}IMPD ${fs_free_perc /home/mak/Alldata}% ${fs_bar 10,125 /home/mak/Alldata} 
+${goto 360}WIN ${fs_free_perc /home/mak/AllWin}% ${fs_bar 10,125 /home/mak/AllWin} 
+${goto 360}TMP ${fs_free_perc /tmp}% ${fs_bar 10,125 /tmp} 
+${goto 360}VAR ${fs_free_perc /var}% ${fs_bar 10,125 /var} 
+${goto 360}USR ${fs_free_perc /usr}% ${fs_bar 10,125 /usr} 
