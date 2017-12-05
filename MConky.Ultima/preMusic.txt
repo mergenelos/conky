@@ -1,2 +1,0 @@
-Connection to player failed: No players found
-ion to player failed: No players found
