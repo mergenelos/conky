@@ -10,6 +10,8 @@ Setup:
  	 
  	3- start conky by typing "conky -qdc ~/.config/conky/MConky/conkyrc.conf" in terminal.
  	
+ 	4- optinal: install "playerctl" to music progress indicator to work :)
+ 	
  	I made all lines to show some datas, even ones seem to be for decoring are bounded with battery percentage
  	So if they don't appear in your setup bound them with other stuff or just make another lua file to draw them for you...
   
